@@ -1,0 +1,38 @@
+﻿<Window x:Class="HelloWPF.Hauptfenster"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelloWPF"
+        mc:Ignorable="d"
+        Title="Hello WPF" Height="310" Width="289" Background="LightCoral">
+    
+    <StackPanel Orientation="Vertical">
+        
+        <Button x:Name="Btn_HalloWPF"
+                Content="Hallo WPF"
+                Background="Green"/>
+
+        <Button>
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="Aquamarine" Offset="0"/>
+                    <GradientStop Color="Yellow" Offset="0.5"/>
+                    <GradientStop Color="DarkGreen" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Content>
+                <StackPanel>
+                    <TextBox x:Name="Tbx_Input" Width="50"/>
+                    <CheckBox/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button>
+            Klick Mich
+        </Button>
+        
+    </StackPanel>
+    
+</Window>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul01_HelloWPF", "HelloWPF\Modul01_HelloWPF.csproj", "{E6D4B5B3-ACA4-484D-BFCE-41E0F2393861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6D4B5B3-ACA4-484D-BFCE-41E0F2393861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D4B5B3-ACA4-484D-BFCE-41E0F2393861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D4B5B3-ACA4-484D-BFCE-41E0F2393861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D4B5B3-ACA4-484D-BFCE-41E0F2393861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E14703E6-0413-487F-85EB-F35A1AE0A894}
+	EndGlobalSection
+EndGlobal

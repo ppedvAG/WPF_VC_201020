@@ -1,0 +1,104 @@
+﻿<Window x:Class="Controls.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="666" Width="364">
+
+    <StackPanel Margin="10, 20, 5, 30">
+
+        <Label x:Name="Lbl_Output"
+               Content="Ich bin ein String!"
+               Foreground="Red"
+               FontSize="25"
+               HorizontalContentAlignment="Right"
+               BorderBrush="Black"
+               BorderThickness="2"/>
+
+        <TextBlock x:Name="Tbl_Strings"
+                   Text="Ich bin auch ein String!"
+                   FontSize="20"
+                   FontFamily="Arial"/>
+
+        <Button x:Name="Btn_KlickMich"
+                Content="Klick mich!"
+                Width="150"
+                HorizontalAlignment="Right"
+                Click="Btn_KlickMich_Click"/>
+
+        <Image x:Name="Img_Bild"
+               Source="C:\Users\kh2\Desktop\Material\ppedv.bmp"
+               Stretch="Uniform"/>
+
+        <TextBox x:Name="Tbx_Input"
+                 Text="Hallo"
+                 Height="60"
+                 AcceptsReturn="True"
+                 AcceptsTab="True"
+                 TextWrapping="WrapWithOverflow"/>
+
+        <ComboBox x:Name="Cbb_Auswahl"
+                  IsEditable="True">
+            <ComboBoxItem Content="Item1"/>
+            <ComboBoxItem Content="Auswahl2"/>
+            <ComboBoxItem Content="Eintrag3"/>
+        </ComboBox>
+
+        <CheckBox Content="Hak mich ab"
+                  IsChecked="{x:Null}"
+                  IsThreeState="True"/>
+
+        <RadioButton Content="Auswahl1" GroupName="group1"
+                     IsChecked="True"/>
+        <RadioButton Content="Auswahl2" GroupName="group1"/>
+        <RadioButton Content="Auswahl3" GroupName="group2"/>
+        <RadioButton Content="Auswahl4" GroupName="group2"/>
+
+        <Slider x:Name="Sdr_Value"
+                Minimum="0" Maximum="100"
+                Value="50"
+                TickPlacement="BottomRight"
+                IsSnapToTickEnabled="True"
+                TickFrequency="10"/>
+
+        <ProgressBar Height="10"
+                     Minimum="0" Maximum="100"
+                     Value="55"
+                     IsIndeterminate="True"/>
+
+        <Menu>
+            <MenuItem Header="Datei">
+                <MenuItem Header="Neu" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Speichern">
+                    <MenuItem Header="Speichern unter"/>
+                    <MenuItem Header="Speichern"/>
+                </MenuItem>
+                <MenuItem Header="Beenden"
+                          Click="MenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Bearbeiten"/>
+        </Menu>
+
+        <Ribbon>
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu>
+                    <RibbonApplicationMenuItem Header="Speichern"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+
+            <RibbonTab Header="Bearbeiten">
+                <RibbonGroup Header="Kopieren und Co">
+                    <RibbonButton Content="Kopieren"/>
+                    <RibbonCheckBox/>
+                    <RibbonComboBox>
+                        <ComboBoxItem Content="Auswahl"/>
+                    </RibbonComboBox>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        
+    </StackPanel>
+
+</Window>
