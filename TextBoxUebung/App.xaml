@@ -1,9 +1,8 @@
-﻿<Application x:Class="HelloWPF.App"
+﻿<Application x:Class="TextBoxUebung.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:HelloWPF"
+             xmlns:local="clr-namespace:TextBoxUebung"
              StartupUri="MainWindow.xaml">
-    <!--Die Startup-Uri definiert das erste Fenster, welches die Application öffnet-->
     <Application.Resources>
          
     </Application.Resources>

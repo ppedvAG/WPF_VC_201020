@@ -1,0 +1,33 @@
+﻿<Window x:Class="TextBoxUebung.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextBoxUebung"
+        mc:Ignorable="d"
+        Title="Textbox-Übung" Height="345" Width="550">
+
+    <DockPanel Margin="5">
+        <TextBlock DockPanel.Dock="Top"
+                   Text="Bitte geben Sie Ihren Text ein:"
+                   Margin="5"/>
+        <WrapPanel DockPanel.Dock="Bottom"
+                   HorizontalAlignment="Right">
+            <Button x:Name="Btn_Ok"
+                    Content="OK" 
+                    Width="100"
+                    Margin="5"/>
+            <Button x:Name="Btn_Cancel"
+                    Content="Abbrechen" 
+                    Width="100"
+                    Margin="5"/>
+        </WrapPanel>
+        <TextBox x:Name="Tbx_Input"
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"
+                 TextWrapping="Wrap"
+                 Margin="5"
+                 Text="Lorem ipsum etc..."/>
+    </DockPanel>
+</Window>
+

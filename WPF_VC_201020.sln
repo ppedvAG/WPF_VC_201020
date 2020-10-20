@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul01_HelloWPF", "HelloWPF\Modul01_HelloWPF.csproj", "{E6D4B5B3-ACA4-484D-BFCE-41E0F2393861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul02_Controls", "Controls\Modul02_Controls.csproj", "{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul03.1_Container", "Container\Modul03.1_Container.csproj", "{F3DD911B-5470-4093-BB71-F7943701D17C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul03.2_TextBoxUebung", "TextBoxUebung\Modul03.2_TextBoxUebung.csproj", "{DE460087-6A50-43EE-9EEF-6094921DC81A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3DD911B-5470-4093-BB71-F7943701D17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3DD911B-5470-4093-BB71-F7943701D17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3DD911B-5470-4093-BB71-F7943701D17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3DD911B-5470-4093-BB71-F7943701D17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE460087-6A50-43EE-9EEF-6094921DC81A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE460087-6A50-43EE-9EEF-6094921DC81A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE460087-6A50-43EE-9EEF-6094921DC81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE460087-6A50-43EE-9EEF-6094921DC81A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

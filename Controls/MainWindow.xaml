@@ -9,6 +9,8 @@
 
     <StackPanel Margin="10, 20, 5, 30">
 
+        <!--Labels besitzen, wie die meisten Controls und alle Container eine Content-Eigenschaft, welche
+        mit weiteren Containern/Controls befüllt werden können (Auch hier darf nur ein Root-Element vohanden sein).-->
         <Label x:Name="Lbl_Output"
                Content="Ich bin ein String!"
                Foreground="Red"
@@ -17,28 +19,48 @@
                BorderBrush="Black"
                BorderThickness="2"/>
 
+        <!--TextBlöcke sind Labels, welche auf Strings spezialisiert sind. Sie besitzen statt der
+            Content- die Text-Property-->
         <TextBlock x:Name="Tbl_Strings"
                    Text="Ich bin auch ein String!"
                    FontSize="20"
                    FontFamily="Arial"/>
 
+        <!--Buttons können von den Usern angeklickt werden, wodurch das Click-Event ausgelöst wird (vgl. CB)-->
         <Button x:Name="Btn_KlickMich"
                 Content="Klick mich!"
                 Width="150"
                 HorizontalAlignment="Right"
                 Click="Btn_KlickMich_Click"/>
 
+        <!--Mittels des Image-Objekts können Grafiken angezeigt und formatiert werden-->
         <Image x:Name="Img_Bild"
                Source="C:\Users\kh2\Desktop\Material\ppedv.bmp"
                Stretch="Uniform"/>
 
+        <!--In einer Textbox kann der User Strings eingeben. Mittels AcceptsReturn wird die Return-Taste für Zeilenumbrüche
+        freigegeben.-->
         <TextBox x:Name="Tbx_Input"
                  Text="Hallo"
                  Height="60"
                  AcceptsReturn="True"
                  AcceptsTab="True"
-                 TextWrapping="WrapWithOverflow"/>
+                 TextWrapping="WrapWithOverflow"
+                 VerticalScrollBarVisibility="Visible">
 
+            <TextBox.ContextMenu>
+                <!--Die meisten Steuerelemente haben eine ContextMenu-Property, in welche ein ContextMenu eingepflegt werden kann.-->
+                <ContextMenu>
+                    <MenuItem Header="Kopieren"/>
+                    <MenuItem Header="Ausschneiden"/>
+                    <MenuItem Header="Einfügen"/>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+
+        </TextBox>
+
+        <!--ItemControls wie ComboBoxen oder ListViews können über die ItemsSource-Property mit Daten 
+        oder in XAML mit Items mit Content-Property bestückt werden-->
         <ComboBox x:Name="Cbb_Auswahl"
                   IsEditable="True">
             <ComboBoxItem Content="Item1"/>
@@ -46,16 +68,22 @@
             <ComboBoxItem Content="Eintrag3"/>
         </ComboBox>
 
-        <CheckBox Content="Hak mich ab"
+        <!--Checkboxen sind visuelle Repräsentationen von boolschen Werten. Mittels IsThreeState kann eine Checkbox einen von DREI
+        unterschiedlichen Zuständen annehmen.-->
+        <CheckBox x:Name="Cbx_Haken"
+                  Content="Hak mich ab"
                   IsChecked="{x:Null}"
                   IsThreeState="True"/>
 
+        <!--RadioButtons können einer Group zugeordnet werden, wodurch nur einer der Buttons angewählt sein darf-->
         <RadioButton Content="Auswahl1" GroupName="group1"
                      IsChecked="True"/>
         <RadioButton Content="Auswahl2" GroupName="group1"/>
         <RadioButton Content="Auswahl3" GroupName="group2"/>
         <RadioButton Content="Auswahl4" GroupName="group2"/>
 
+        <!--Mittels Slidern kann der User einen numerischen Wert im definierten Bereich auswählen. Die Ticks geben dabei Hilfestellung
+        und definieren die auswählbareb Zahlenwerte.-->
         <Slider x:Name="Sdr_Value"
                 Minimum="0" Maximum="100"
                 Value="50"
@@ -63,11 +91,15 @@
                 IsSnapToTickEnabled="True"
                 TickFrequency="10"/>
 
+        <!--Mittels der ProgressBar können prozentuale Fortschritte visualisiert werden. Mit IsIndeterminate kann ein bewegender Balken
+        dargestellt werden.-->
         <ProgressBar Height="10"
                      Minimum="0" Maximum="100"
                      Value="55"
                      IsIndeterminate="True"/>
 
+        <!--Menüs, wie ein Fenster-Menü (Menu) oder ein Kontext-Menü (ContextMenu) werden mit MenuItems befüllt.
+        Diese können ihrerseits weitere MenuItems aufnehmen, wodurch sich dann Untermenüs bilden-->
         <Menu>
             <MenuItem Header="Datei">
                 <MenuItem Header="Neu" Click="MenuItem_Click_1"/>
@@ -81,6 +113,7 @@
             <MenuItem Header="Bearbeiten"/>
         </Menu>
 
+        <!--Ribbons sind die 'neuen' MS-Menüs. Sie sind zu finden unter dem Namespace System.Windows.Controls.Ribbon-->
         <Ribbon>
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu>
