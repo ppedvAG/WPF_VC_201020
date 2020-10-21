@@ -4,11 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personendatenbank"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Neue Person" 
         Height="280" Width="285" ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" Topmost="True"
         Style="{StaticResource Sty_Wnd}">
+
+    <Window.Resources>
+        <ObjectDataProvider x:Key="Odp_Colors"
+                            MethodName="GetType"
+                            ObjectType="{x:Type sys:Type}">
+            <ObjectDataProvider.MethodParameters>
+                <sys:String>
+                    System.Windows.Media.Colors, PresentationCore,
+                    Version=3.0.0.0, Culture=neutral, 
+                    PublicKeyToken=31bf3856ad364e35
+                </sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="Odp_ColorsProperties"
+                            MethodName="GetProperties"
+                            ObjectInstance="{StaticResource Odp_Colors}"/>
+    </Window.Resources>
+    
+    <Window.DataContext>
+        <local:Person/>
+    </Window.DataContext>
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -39,23 +62,30 @@
                    VerticalAlignment="Top"/>
 
         <TextBox x:Name="Tbx_Vorname"
-                 Grid.Column="1"/>
+                 Grid.Column="1"
+                 Text="{Binding Vorname}"/>
 
         <TextBox x:Name="Tbx_Nachname"
-                 Grid.Column="1" Grid.Row="1"/>
+                 Grid.Column="1" Grid.Row="1"
+                 Text="{Binding Nachname}"/>
 
         <DatePicker x:Name="Dpr_Geburtsdatum"
-                    Grid.Column="1" Grid.Row="2"/>
+                    Grid.Column="1" Grid.Row="2"
+                    SelectedDate="{Binding Geburtsdatum}"/>
 
         <CheckBox x:Name="Cbx_Verheiratet"
-                  Grid.Column="1" Grid.Row="3"/>
+                  Grid.Column="1" Grid.Row="3"
+                  IsChecked="{Binding Verheiratet}"/>
 
         <ComboBox x:Name="Cbb_Lieblingsfarbe"
-                  Grid.Column="1" Grid.Row="4">
-            <ComboBoxItem Content="Blau" Foreground="Blue"/>
+                  Grid.Column="1" Grid.Row="4"
+                  ItemsSource="{Binding Source={StaticResource Odp_ColorsProperties}}"
+                  SelectedValue="{Binding Lieblingsfarbe}"
+                  SelectedValuePath="Name">
+            <!--<ComboBoxItem Content="Blau" Foreground="Blue"/>
             <ComboBoxItem Content="Grün" Foreground="Green"/>
             <ComboBoxItem Content="Rot" Foreground="Red"/>
-            <ComboBoxItem Content="Gelb" Foreground="Yellow"/>
+            <ComboBoxItem Content="Gelb" Foreground="Yellow"/>-->
         </ComboBox>
 
         <StackPanel Margin="2"
@@ -71,9 +101,11 @@
         <WrapPanel Grid.Row="6" Grid.ColumnSpan="2"
                    HorizontalAlignment="Right" Margin="0,5">
             <Button x:Name="Btn_Ok"
-                    Content="OK"/>
+                    Content="OK"
+                    Click="Btn_Ok_Click"/>
             <Button x:Name="Btn_Abbruch"
-                    Content="Abbrechen"/>
+                    Content="Abbrechen"
+                    Click="Btn_Abbruch_Click"/>
         </WrapPanel>
     </Grid>
 </Window>

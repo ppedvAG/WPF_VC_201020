@@ -21,9 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul06.1_Binding", "Bindin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul06.2_ValueConverter", "ValueConverter\Modul06.2_ValueConverter.csproj", "{3B6641C2-39AA-4F7D-8365-C20A891D9303}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Styles", "Styles\Styles.csproj", "{BDCC0357-D0BA-459B-8325-68330EE68B65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul07_Styles", "Styles\Modul07_Styles.csproj", "{BDCC0357-D0BA-459B-8325-68330EE68B65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Templates", "Templates\Templates.csproj", "{0497CCD5-B14B-44FA-98C9-0B81CB2A3354}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul08_Templates", "Templates\Modul08_Templates.csproj", "{0497CCD5-B14B-44FA-98C9-0B81CB2A3354}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
