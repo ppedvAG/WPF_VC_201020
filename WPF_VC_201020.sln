@@ -3,15 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul01_HelloWPF", "HelloWPF\Modul01_HelloWPF.csproj", "{E6D4B5B3-ACA4-484D-BFCE-41E0F2393861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul01_HelloWPF", "HelloWPF\Modul01_HelloWPF.csproj", "{E6D4B5B3-ACA4-484D-BFCE-41E0F2393861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul02_Controls", "Controls\Modul02_Controls.csproj", "{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul02_Controls", "Controls\Modul02_Controls.csproj", "{ABB5DCDA-E090-4F01-B363-9EF3A8B04A86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul03.1_Container", "Container\Modul03.1_Container.csproj", "{F3DD911B-5470-4093-BB71-F7943701D17C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul03.1_Container", "Container\Modul03.1_Container.csproj", "{F3DD911B-5470-4093-BB71-F7943701D17C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul03.2_TextBoxUebung", "TextBoxUebung\Modul03.2_TextBoxUebung.csproj", "{DE460087-6A50-43EE-9EEF-6094921DC81A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul03.2_TextBoxUebung", "TextBoxUebung\Modul03.2_TextBoxUebung.csproj", "{DE460087-6A50-43EE-9EEF-6094921DC81A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personendatenbank", "Personendatenbank\Personendatenbank.csproj", "{C59EAE49-B570-4850-B92D-D1041AEB210B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Personendatenbank", "Personendatenbank\Personendatenbank.csproj", "{C59EAE49-B570-4850-B92D-D1041AEB210B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul04_EventRouting", "EventRouting\Modul04_EventRouting.csproj", "{52633494-BD92-4DF4-875C-AA589D5136B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul05_Ressourcen", "Ressourcen\Modul05_Ressourcen.csproj", "{B16DC0FB-8BD7-4EE7-A04C-B11464B0708E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul06.1_Binding", "Binding\Modul06.1_Binding.csproj", "{FD14990C-910E-4A40-A872-196688031D1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul06.2_ValueConverter", "ValueConverter\Modul06.2_ValueConverter.csproj", "{3B6641C2-39AA-4F7D-8365-C20A891D9303}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +47,22 @@ Global
 		{C59EAE49-B570-4850-B92D-D1041AEB210B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C59EAE49-B570-4850-B92D-D1041AEB210B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C59EAE49-B570-4850-B92D-D1041AEB210B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52633494-BD92-4DF4-875C-AA589D5136B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52633494-BD92-4DF4-875C-AA589D5136B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52633494-BD92-4DF4-875C-AA589D5136B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52633494-BD92-4DF4-875C-AA589D5136B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B16DC0FB-8BD7-4EE7-A04C-B11464B0708E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B16DC0FB-8BD7-4EE7-A04C-B11464B0708E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B16DC0FB-8BD7-4EE7-A04C-B11464B0708E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B16DC0FB-8BD7-4EE7-A04C-B11464B0708E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD14990C-910E-4A40-A872-196688031D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD14990C-910E-4A40-A872-196688031D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD14990C-910E-4A40-A872-196688031D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD14990C-910E-4A40-A872-196688031D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6641C2-39AA-4F7D-8365-C20A891D9303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B6641C2-39AA-4F7D-8365-C20A891D9303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B6641C2-39AA-4F7D-8365-C20A891D9303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B6641C2-39AA-4F7D-8365-C20A891D9303}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

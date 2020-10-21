@@ -1,0 +1,113 @@
+﻿<Window x:Class="ValueConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ValueConverter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="458" Width="461">
+
+    <Window.Resources>
+        <!--Wenn eine Bindung an eine Property durchgeführt werden soll, welche einen anderen Datentyp liefert,
+        als ihn die Ziel-Property erwartet (oder ein Wert vor der Übergabe manipuliert werden soll), muss in den 
+        Ressourcen ein Converter eingebunden werden, welcher die Typumwandlung übernimmt-->
+        <local:DoubleToBrushConverter x:Key="double2brush"/>
+        <local:DoublesToBrushConverter x:Key="doubles2brush"/>
+    </Window.Resources>
+
+    <StackPanel>
+
+        <!--ValueConverter-->
+
+        <Slider x:Name="Sdr_Rot" Minimum="0" Maximum="255" Value="0"/>
+        <Border BorderBrush="Black" BorderThickness="1" Width="100">
+            <Rectangle Width="100" Height="100" x:Name="Rct_Output"
+                       Fill="{Binding ElementName=Sdr_Rot, Path=Value, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource double2brush}}">
+                <!--Anstelle einer Bereitstellung über die Ressourcen, kann der Converter auch
+                    direkt in dem Binding-Objekt instanziert werden-->
+                <!--<Rectangle.Fill>
+                    <Binding ElementName="Sdr_Rot" Path="Value" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.Converter>
+                            <local:DoubleToBrushConverter/>
+                        </Binding.Converter>
+                    </Binding>
+                </Rectangle.Fill>-->
+            </Rectangle>
+        </Border>
+
+        <Separator Margin="5"/>
+
+        <!--MultiValueConverter-->
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="R:" Foreground="Red"/>
+            <Slider Grid.Column="1" 
+                    Minimum="0" Maximum="255" Margin="5,0"
+                    x:Name="Sdr_Red"
+                    Value="255"
+                    IsSnapToTickEnabled="True"/>
+            <TextBox Grid.Column="2" Width="40" 
+                     Text="{Binding ElementName=Sdr_Red, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="1"
+                       Text="G:" Foreground="Green"/>
+            <Slider Grid.Row="1" Grid.Column="1" 
+                    Minimum="0" Maximum="255" Margin="5,0"
+                    x:Name="Sdr_Green"
+                    Value="255"
+                    IsSnapToTickEnabled="True"/>
+            <TextBox Grid.Column="2" Grid.Row="1" Width="40" 
+                     Text="{Binding ElementName=Sdr_Green, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="2"
+                       Text="B:" Foreground="Blue"/>
+            <Slider Grid.Row="2" Grid.Column="1" 
+                    Minimum="0" Maximum="255" Margin="5,0"
+                    x:Name="Sdr_Blue"
+                    Value="255"
+                    IsSnapToTickEnabled="True"/>
+            <TextBox Grid.Column="2" Grid.Row="2" Width="40" 
+                     Text="{Binding ElementName=Sdr_Blue, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="3"
+                       Text="A:"/>
+            <Slider Grid.Row="3" Grid.Column="1" 
+                    Minimum="0" Maximum="255" Margin="5,0"
+                    x:Name="Sdr_Alpha"
+                    Value="255"
+                    IsSnapToTickEnabled="True"/>
+            <TextBox Grid.Column="2" Grid.Row="3" Width="40" 
+                     Text="{Binding ElementName=Sdr_Alpha, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
+
+        </Grid>
+
+        <TextBlock Text="{Binding ElementName=Rct_Output_2, Path=Fill, StringFormat=Picked color: {0}, UpdateSourceTrigger=PropertyChanged}"
+                   HorizontalAlignment="Center" Margin="5"/>
+        <Border BorderBrush="Black" BorderThickness="1" Width="100">
+            <Rectangle x:Name="Rct_Output_2" Width="100" Height="100">
+                <Rectangle.Fill>
+                    <!--Wenn mehrere Quellen zu an dasselbe Ziel gebunden werden, muss ein MultiBinding etabliert werden.
+                    Der Converter erhält die Werte der Bindungen in der Reihenfolge, in wechler sie in XAML deklaiert wurden.-->
+                    <MultiBinding Converter="{StaticResource doubles2brush}">
+                        <Binding ElementName="Sdr_Red" Path="Value"/>
+                        <Binding ElementName="Sdr_Green" Path="Value"/>
+                        <Binding ElementName="Sdr_Blue" Path="Value"/>
+                        <Binding ElementName="Sdr_Alpha" Path="Value"/>
+                    </MultiBinding>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Border>
+    </StackPanel>
+</Window>
