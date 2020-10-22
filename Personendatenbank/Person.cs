@@ -19,6 +19,12 @@ namespace Personendatenbank
 
         public Color Lieblingsfarbe { get; set; }
 
-        public Gender Geschlecht { get; set; } 
+        public Gender Geschlecht { get; set; }
+
+        public Person()
+        {
+            this.Geburtsdatum = DateTime.Now;
+        }
+
     }
 }

@@ -1,0 +1,62 @@
+﻿<Window x:Class="Validation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Validation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="705" Width="526">
+
+    <Window.DataContext>
+        <local:Person/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ControlTemplate x:Key="Ctp_Error_01">
+            <StackPanel>
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder x:Name="Aep"/>
+                </Border>
+                <TextBlock Foreground="Red"
+                           Text="{Binding ElementName=Aep, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+            </StackPanel>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="Ctp_Error_02">
+            <StackPanel>
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder x:Name="Aep"/>
+                </Border>
+                <Popup PlacementTarget="{Binding ElementName=Aep}"
+                       Placement="Bottom"
+                       PopupAnimation="Fade" AllowsTransparency="True"
+                       IsOpen="{Binding ElementName=Aep, Path=AdornedElement.IsMouseOver, Mode=OneWay}">                
+                    <TextBlock Foreground="White" Background="Red" Margin="5"
+                               Text="{Binding ElementName=Aep, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+                </Popup>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    
+    <StackPanel Margin="5">
+        <TextBox x:Name="Tbx_IpInput"
+                 Validation.ErrorTemplate="{StaticResource Ctp_Error_01}">
+            <TextBox.Text>
+                <Binding ElementName="Tbl_IpOutput" Path="Text" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:IPv4Validation/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBlock x:Name="Tbl_IpOutput"/>
+
+        <TextBox x:Name="Tbx_PersonenName" 
+                 Text="{Binding Name, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"
+                 Validation.ErrorTemplate="{StaticResource Ctp_Error_02}"/>
+        
+        <TextBox x:Name="Tbx_PersonenAlter" 
+                 Text="{Binding Alter, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 Validation.ErrorTemplate="{StaticResource Ctp_Error_02}"/>
+    </StackPanel>
+</Window>

@@ -27,6 +27,8 @@
         <ObjectDataProvider x:Key="Odp_ColorsProperties"
                             MethodName="GetProperties"
                             ObjectInstance="{StaticResource Odp_Colors}"/>
+
+        <local:EnumToBoolConverter x:Key="enum2bool"/>
     </Window.Resources>
     
     <Window.DataContext>
@@ -86,16 +88,29 @@
             <ComboBoxItem Content="Grün" Foreground="Green"/>
             <ComboBoxItem Content="Rot" Foreground="Red"/>
             <ComboBoxItem Content="Gelb" Foreground="Yellow"/>-->
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="Black" BorderThickness="1" Width="20" Height="20">
+                            <Rectangle Width="20" Height="20" Fill="{Binding Name}"/>
+                        </Border>
+                        <TextBlock Text="{Binding Name}" Margin="2,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
         <StackPanel Margin="2"
                     Grid.Column="1" Grid.Row="5">
             <RadioButton Content="M"
-                         GroupName="Rbg_Gender"/>
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static local:Gender.Männlich}}"/>
             <RadioButton Content="W"
-                         GroupName="Rbg_Gender"/>
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool},ConverterParameter={x:Static local:Gender.Weiblich}}"/>
             <RadioButton Content="D"
-                         GroupName="Rbg_Gender"/>
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static local:Gender.Divers}}"/>
         </StackPanel>
 
         <WrapPanel Grid.Row="6" Grid.ColumnSpan="2"
