@@ -12,9 +12,12 @@
     </Window.DataContext>
 
     <Window.Resources>
+        <!--ErrorTemplates sind ControlTemplates, welche das Element im Falle einer verletzten ValidationRule anzeigt-->
         <ControlTemplate x:Key="Ctp_Error_01">
             <StackPanel>
                 <Border BorderBrush="Red" BorderThickness="2">
+                    <!--AdornedElementPlaceholder sind Platzhalterelemente für das ürsprüngliche Element in
+                        ErrorTemplates-->
                     <AdornedElementPlaceholder x:Name="Aep"/>
                 </Border>
                 <TextBlock Foreground="Red"
@@ -44,6 +47,9 @@
             <TextBox.Text>
                 <Binding ElementName="Tbl_IpOutput" Path="Text" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
+                        <!--ValidationRules definieren, wann eine Eingabe durch den Benutzer eine zulässige Eingabe ist und
+                        geben das Ergebnis dieser Prüfung an die GUI zurück. Im False-Fall wird gegebenenfalls ein ErrorTemplate
+                        angezeigt. ValidationsRules werden als C#-Klasse abgelegt.-->
                         <local:IPv4Validation/>
                     </Binding.ValidationRules>
                 </Binding>
@@ -51,10 +57,12 @@
         </TextBox>
         <TextBlock x:Name="Tbl_IpOutput"/>
 
+        <!--Mit der Property ValidatesOnExceptions können vom CodeBehind geworfene Exceptions als ValidierungsFall von der GUI aufgefangen werden-->
         <TextBox x:Name="Tbx_PersonenName" 
                  Text="{Binding Name, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"
                  Validation.ErrorTemplate="{StaticResource Ctp_Error_02}"/>
-        
+
+        <!--Mit der Property ValidatesOnDataErrors können durch bestimmte Interfaces direkt in der Datenklasse ValidierungsFälle definiert werden-->
         <TextBox x:Name="Tbx_PersonenAlter" 
                  Text="{Binding Alter, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                  Validation.ErrorTemplate="{StaticResource Ctp_Error_02}"/>
