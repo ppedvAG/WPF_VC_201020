@@ -35,7 +35,12 @@ namespace Personendatenbank
         {
             string ausgabe = NeuePerson.Vorname + " " + NeuePerson.Nachname + " (" + NeuePerson.Geschlecht + ")\n" + NeuePerson.Geburtsdatum.ToShortDateString() + "\n" + NeuePerson.Lieblingsfarbe.ToString();
             ausgabe += NeuePerson.Verheiratet ? "\nIst Verheiratet" : "";
-            MessageBox.Show(ausgabe);
+            if (MessageBox.Show(ausgabe+"\nÜbernehmen?", "Person übertragen", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                this.DialogResult = true;
+
+                this.Close();
+            }
         }
 
         private void Btn_Abbruch_Click(object sender, RoutedEventArgs e)

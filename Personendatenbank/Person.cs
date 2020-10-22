@@ -30,6 +30,17 @@ namespace Personendatenbank
             this.Geburtsdatum = DateTime.Now.AddDays(1);
         }
 
+        public Person(Person altePerson)
+        {
+            this.Vorname = altePerson.Vorname;
+            this.Nachname = altePerson.Nachname;
+            this.Geschlecht = altePerson.Geschlecht;
+            this.Lieblingsfarbe = altePerson.Lieblingsfarbe;
+            this.Verheiratet = altePerson.Verheiratet;
+
+            this.Geburtsdatum = new DateTime(altePerson.Geburtsdatum.Year, altePerson.Geburtsdatum.Month, altePerson.Geburtsdatum.Day);
+        }
+
         public string Error
         {
             get { return ""; }
