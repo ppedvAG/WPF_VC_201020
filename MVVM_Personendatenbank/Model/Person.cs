@@ -9,12 +9,19 @@ using System.Windows.Media;
 
 namespace MVVM_Personendatenbank.Model
 {
+    //Im Model-Teil eines MVVM-Programms werden die Buisness-Klassen abgelegt. Diese Klassen dürfen keine Referenzen auf die anderen MVVM-Teile haben.
+    //Dieses Beispiel besteht nur aus einer Model-Klasse sowie einem Enumerator.
+
+    //Model-Klasse 'Person' mit dem IDataErrorInfo-Interface zur Validierung der Benutzereingaben bezüglich der Klassenproperties
     public class Person : IDataErrorInfo
     {
         #region Statische Member
 
+        //Statische Listenproperty zum Ablegen der geladenen Personen (ObservableCollection, damit die GUI über Veränderungen innerhalb der Liste
+        //informiert wird)
         public static ObservableCollection<Person> Personenliste { get; set; } = new ObservableCollection<Person>();
 
+        //Methode, welche Bsp-Daten generiert und damit den Zugriff auf eine Datenbank simuliert
         public static void LadePersonenAusDb()
         {
             Personenliste.Add(new Person() { Vorname = "Anna", Nachname = "Nass", Geburtsdatum = new DateTime(1988, 4, 13), Verheiratet = false, Lieblingsfarbe = Colors.Red, Geschlecht = Gender.Weiblich });
@@ -23,6 +30,7 @@ namespace MVVM_Personendatenbank.Model
 
         #endregion
 
+        //Properties der 'Person'-Klasse
         public string Vorname { get; set; }
 
         public string Nachname { get; set; }
@@ -35,13 +43,17 @@ namespace MVVM_Personendatenbank.Model
 
         public Gender Geschlecht { get; set; }
 
+        //Parameterloser Standartkonstruktor, welcher die leeren 'Person'-Objekte auf einen Startzustand setzt
         public Person()
         {
+            //Die String-Eigenschaften werden auf "" initialisiert, um GUI-Fehler zu vermeiden
             this.Vorname = "";
             this.Nachname = "";
+            //Die 'Gerburtsdatum'-Property wird auf das aktuelle Datum gesetzt, damit der Benutzer innerhalb der Auswahlmaske nicht so viel suchen muss
             this.Geburtsdatum = DateTime.Now.AddDays(1);
         }
 
+        //Kopierkonstruktor, welcher eine 1-zu-1-Kopie eines übergebenen 'Person'-Objekts erzeugt
         public Person(Person altePerson)
         {
             this.Vorname = altePerson.Vorname;
@@ -53,11 +65,13 @@ namespace MVVM_Personendatenbank.Model
             this.Geburtsdatum = new DateTime(altePerson.Geburtsdatum.Year, altePerson.Geburtsdatum.Month, altePerson.Geburtsdatum.Day);
         }
 
+        //Durch das Interface geforderte Properties
         public string Error
         {
             get { return ""; }
         }
 
+        //Property, welche die Validierungsfehler und deren Fehlermeldungen beinhaltet
         public string this[string columnName]
         {
             get

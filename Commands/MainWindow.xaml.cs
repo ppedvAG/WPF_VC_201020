@@ -20,8 +20,8 @@ namespace Commands
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Command-Properties        
         public CloseCommand CloseCmd { get; set; }
-
         public CustomCommand OpenCmd { get; set; }
 
         public MainWindow()
@@ -30,12 +30,14 @@ namespace Commands
 
             CloseCmd = new CloseCommand();
 
+            //Initialisierung des Commands mit Übergabe der beiden benötigten Methoden in Lamda-Schreibweise
             OpenCmd = new CustomCommand
                 (
                     p => (p as Window).Width < 150,
                     p => new MainWindow().Show()
                 );
 
+            //Setzen des DataContext, damit die Kurzbindung an das Command funktioniert
             this.DataContext = this;
         }
     }

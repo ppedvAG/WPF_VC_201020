@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul03.1_Container", "Cont
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul03.2_TextBoxUebung", "TextBoxUebung\Modul03.2_TextBoxUebung.csproj", "{DE460087-6A50-43EE-9EEF-6094921DC81A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Personendatenbank", "Personendatenbank\Personendatenbank.csproj", "{C59EAE49-B570-4850-B92D-D1041AEB210B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Personendatenbank (vgl. MVVM)", "Personendatenbank\Personendatenbank (vgl. MVVM).csproj", "{C59EAE49-B570-4850-B92D-D1041AEB210B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul04_EventRouting", "EventRouting\Modul04_EventRouting.csproj", "{52633494-BD92-4DF4-875C-AA589D5136B6}"
 EndProject
@@ -37,9 +37,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul14_Localisation", "Loc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul15_Animations", "Animations\Modul15_Animations.csproj", "{A3AE55F0-B3DD-4852-B1FF-55766AB14BD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "Commands\Commands.csproj", "{C03F9E11-2A55-4F2F-A477-4F4B33D2C863}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul13_Commands", "Commands\Modul13_Commands.csproj", "{C03F9E11-2A55-4F2F-A477-4F4B33D2C863}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM_Personendatenbank", "MVVM_Personendatenbank\MVVM_Personendatenbank.csproj", "{414DC16B-8CEE-43A4-BA3F-793D12DA006F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlendTest", "BlendTest\BlendTest.csproj", "{A05C705D-B838-41FC-9D65-53371043EB0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{414DC16B-8CEE-43A4-BA3F-793D12DA006F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{414DC16B-8CEE-43A4-BA3F-793D12DA006F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{414DC16B-8CEE-43A4-BA3F-793D12DA006F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05C705D-B838-41FC-9D65-53371043EB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05C705D-B838-41FC-9D65-53371043EB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05C705D-B838-41FC-9D65-53371043EB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05C705D-B838-41FC-9D65-53371043EB0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

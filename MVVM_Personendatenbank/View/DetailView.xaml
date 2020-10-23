@@ -1,0 +1,197 @@
+﻿<Window x:Class="MVVM_Personendatenbank.View.DetailView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_Personendatenbank.View"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:h="clr-namespace:MVVM_Personendatenbank.Hilfsklassen"
+        xmlns:vm="clr-namespace:MVVM_Personendatenbank.ViewModel"
+        mc:Ignorable="d"
+        Title="Neue Person" 
+        Height="280" Width="285" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" Topmost="True"
+        Style="{StaticResource Sty_Wnd}"
+        x:Name="Wnd_Detail">
+
+    <Window.DataContext>
+        <vm:DetailViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <!--ObjectDataProvider werden verwendet, um Eigenschaften, Zustande oä von beliebigen Objekten
+        zu Objekten aufzubereiten, welche in XAML benutzt werden können. Z.b. zu Listen , so dass diese 
+        als Datenquelle für ItemControls (z.B. Comboboxen) verwendet werden können-->
+        <!--Objekt zu Bereitstellungen des Datentyps Colors in XAML (dieser Schritt ist nur in .NET Core nötig-->
+        <ObjectDataProvider x:Key="Odp_Colors"
+                            MethodName="GetType"
+                            ObjectType="{x:Type sys:Type}">
+            <ObjectDataProvider.MethodParameters>
+                <sys:String>
+                    System.Windows.Media.Colors, PresentationCore,
+                    Version=3.0.0.0, Culture=neutral, 
+                    PublicKeyToken=31bf3856ad364e35
+                </sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <!--Objekt zur Bereitstellung der Properties der Colors-Klasse als Liste (vordefinierte Farben).
+            Hier mithilfe des obigen ObjectDataProviders-->
+        <ObjectDataProvider x:Key="Odp_ColorsProperties"
+                            MethodName="GetProperties"
+                            ObjectInstance="{StaticResource Odp_Colors}"/>
+
+        <h:EnumToBoolConverter x:Key="enum2bool"/>
+
+        <!--Error-Template für den Fall einer fehlerhaften Eingabe in einzelnen Controls-->
+        <ControlTemplate x:Key="Ctp_Error">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="1" x:Name="BdrAep">
+                    <AdornedElementPlaceholder x:Name="Aep"/>
+                </Border>
+                <TextBlock Text="!" Foreground="Red" FontSize="{StaticResource double_FontSize}"
+                           Margin="3,0" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Popup AllowsTransparency="True" PopupAnimation="Slide"
+                       PlacementTarget="{Binding ElementName=BdrAep}" Placement="Bottom"
+                       IsOpen="{Binding ElementName=Aep, Path=AdornedElement.IsMouseOver, Mode=OneWay}">
+                    <TextBlock Text="{Binding ElementName=Aep, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+                               Foreground="White" Background="Red" Padding="2" FontSize="{StaticResource double_FontSize}"/>
+                </Popup>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+
+
+    <Grid Margin="10">
+        <!--Grid-Spalten- und Reihen-Definitionen-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--linke Spalte (nur statische Stringanzeigen)-->
+        <TextBlock Text="Vorname:"/>
+        <TextBlock Text="Nachname:" 
+                   Grid.Row="1"/>
+        <TextBlock Text="Geburtsdatum:" 
+                   Grid.Row="2"/>
+        <TextBlock Text="Verheiratet:" 
+                   Grid.Row="3"/>
+        <TextBlock Text="Lieblingsfarbe:" 
+                   Grid.Row="4"/>
+        <TextBlock Text="Geschlecht:" 
+                   Grid.Row="5"
+                   VerticalAlignment="Top"/>
+
+        <!--rechte Spalte (Eingabefelder)
+        Bindungen erfolgen an Eigenschaften (z.B. Vorname) einer Property (AktuellePerson) aus dem DataContext.
+        Zur Verwendung des Validierungs-Interfaces wurde ValidatesOnDataErrors gesetzt.-->
+        <TextBox x:Name="Tbx_Vorname"
+                 Grid.Column="1"
+                 Text="{Binding AktuellePerson.Vorname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 Validation.ErrorTemplate="{StaticResource Ctp_Error}"/>
+
+        <TextBox x:Name="Tbx_Nachname"
+                 Grid.Column="1" Grid.Row="1"
+                 Text="{Binding AktuellePerson.Nachname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 Validation.ErrorTemplate="{StaticResource Ctp_Error}"/>
+
+        <DatePicker x:Name="Dpr_Geburtsdatum"
+                    Grid.Column="1" Grid.Row="2"
+                    SelectedDate="{Binding AktuellePerson.Geburtsdatum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 Validation.ErrorTemplate="{StaticResource Ctp_Error}"/>
+
+        <CheckBox x:Name="Cbx_Verheiratet"
+                  Grid.Column="1" Grid.Row="3"
+                  IsChecked="{Binding AktuellePerson.Verheiratet}"/>
+
+        <!--Die ComboBox holt sich die Farben über den oben definierten ObjektDataProvider, welcher hier als
+        ItemSource gesetzt wurde. Mittels der Eigenschaft SelectedPathValue kann definiert werden, welche die
+        Eigenschaften des ODP in der Auswahl verwendet werden soll. Beachte, dass auch das Rechteck und die 
+        Textbox aus dem ItemTemplate an diese ausgewählte Eigenschaft gebunden sind.-->
+        <ComboBox x:Name="Cbb_Lieblingsfarbe"
+                  Grid.Column="1" Grid.Row="4"
+                  ItemsSource="{Binding Source={StaticResource Odp_ColorsProperties}}"
+                  SelectedValue="{Binding AktuellePerson.Lieblingsfarbe, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="Name"
+                  Validation.ErrorTemplate="{StaticResource Ctp_Error}">
+            <!--<ComboBoxItem Content="Blau" Foreground="Blue"/>
+            <ComboBoxItem Content="Grün" Foreground="Green"/>
+            <ComboBoxItem Content="Rot" Foreground="Red"/>
+            <ComboBoxItem Content="Gelb" Foreground="Yellow"/>-->
+            <ComboBox.ItemTemplate>
+                <!--Diese ItemTemplate stellt vor dem entsprechenden Farbnamen ein Rechteck in dieser Farbe dar-->
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="Black" BorderThickness="1" Width="20" Height="20">
+                            <Rectangle Width="20" Height="20" Fill="{Binding Name}"/>
+                        </Border>
+                        <TextBlock Text="{Binding Name}" Margin="2,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <!--Die RadioButtons übermitteln an den Konverter den ihnen zugeteilten Enumerator-Zustand über den 
+        ConverterParameter. Dadurch muss der Konverter diese nur noch mit der ausgewählten Eigenschaft vergleichen.-->
+        <StackPanel Margin="2"
+                    Grid.Column="1" Grid.Row="5">
+            <RadioButton Content="M"
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding AktuellePerson.Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static h:Gender.Männlich}}"/>
+            <RadioButton Content="W"
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding AktuellePerson.Geschlecht, Converter={StaticResource enum2bool},ConverterParameter={x:Static h:Gender.Weiblich}}"/>
+            <RadioButton Content="D"
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding AktuellePerson.Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static h:Gender.Divers}}"/>
+        </StackPanel>
+
+        <WrapPanel Grid.Row="6" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Right" Margin="0,5">
+            <!--Den Buttons wird als CommandParameter das Fenster übergeben, damit im ViewModel dessen Close-Befehl verwendet werden kann-->
+            <Button x:Name="Btn_Ok"
+                    Content="OK"
+                    Command="{Binding OkCmd}"
+                    CommandParameter="{Binding ElementName=Wnd_Detail}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="110"/>
+                        <Setter Property="Margin" Value="5,0,0,0"/>
+                        <Setter Property="IsEnabled" Value="False"/>
+
+                        <!--In diesem ButtonStyle wurden diverse Trigger definiert. Diese sorgen dafür, dass der Button erst verfügbar
+                            wird, wenn keines der obigen Elemente eine fehlerhafte Validierung meldet. Dies könnte aud durch die CanExecute-
+                            Methode des Commands gesteuert werden, ist auf diese Weise jedoch einfacher-->
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=Tbx_Vorname, Path=(Validation.HasError)}" Value="False"/>
+                                    <Condition Binding="{Binding ElementName=Tbx_Nachname, Path=(Validation.HasError)}" Value="False"/>
+                                    <Condition Binding="{Binding ElementName=Dpr_Geburtsdatum, Path=(Validation.HasError)}" Value="False"/>
+                                    <Condition Binding="{Binding ElementName=Cbb_Lieblingsfarbe, Path=(Validation.HasError)}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="Btn_Abbruch"
+                    Content="Abbrechen"
+                    Command="{Binding CancelCmd}"
+                    CommandParameter="{Binding ElementName=Wnd_Detail}"/>
+        </WrapPanel>
+    </Grid>
+</Window>
+

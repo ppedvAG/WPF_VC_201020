@@ -8,6 +8,11 @@
         Title="MainWindow" Height="573" Width="450"
         x:Name="Wnd_Main">
 
+    <!--Commands sind Light-Events, welche man über Xaml einbindet und die in 
+        einer eigenen Klasse definiert werden. Jeder Command besitzt eine Methode,
+        in welcher sich der auszuführende Code befindet und eine Methode, welche 
+        überprüft, ob der Command gerade ausgeführt werden darf.
+        Bestimmte Commands (s.u.) sind bereits vordefiniert.-->
     <Window.CommandBindings>
         <CommandBinding Command="Cut"/>
         <CommandBinding Command="Copy"/>
@@ -18,12 +23,15 @@
         <TextBox x:Name="Tbx_Input" Height="100" AcceptsReturn="True">
             <TextBox.ContextMenu>
                 <ContextMenu>
+                    <!--Verwendung der voreingestellten Commands-->
                     <MenuItem Command="Cut"/>
                     <MenuItem Command="Copy"/>
                     <MenuItem Command="Paste"/>
                 </ContextMenu>
             </TextBox.ContextMenu>
         </TextBox>
+        
+        <!--Verwendung eines eigenen Commands aus dem CodeBehind-->
         <Button Content="Fenster schließen" 
                 Command="{Binding CloseCmd}" 
                 CommandParameter="{Binding ElementName=Wnd_Main}"/>
